@@ -6,7 +6,7 @@ def smtpCommands(clientSocket, commandString, errorType):
     recv1 = clientSocket.recv(1024).decode()
     print(recv1)
     if recv1[:3] != errorType:
-        print(errorMessage(errorType))
+        print(errorType)
 
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     # choose a mail server (e.g. Google mail server) if you want ot verify the script beyond gradescoe
@@ -18,7 +18,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     recv = clientSocket.recv(1024).decode()
     print(recv)
     if recv[:3] != '220':
-        print(errorMessage('220'))
+        print('220 reply not received from server.')
 
     # send HELO command and print server response.
     smtpCommands(clientSocket, 'HELO Alice\r\n', '250')
